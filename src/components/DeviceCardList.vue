@@ -1,5 +1,5 @@
 <template>
-    <el-scrollbar always="true">
+    <el-scrollbar>
         <div class="cards">
             <DeviceCard class="scroll-item" v-for="image in image_list" :image="image"></DeviceCard>
         </div>
@@ -8,7 +8,9 @@
 
 <script setup>
     import DeviceCard from './DeviceCard.vue';
-    defineProps(['image_list'])
+    const props  = defineProps(['image_list'])
+   
+
 </script>
 
 <style scoped>

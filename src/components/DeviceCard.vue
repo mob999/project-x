@@ -2,11 +2,11 @@
     <div class="card">
         <div>
             <el-image :fit="contain" class="image-container" :src="image.url1"></el-image>
-            <div style="text-align: center;">原图</div>
+            <div style="text-align: center; color: white;">原图</div>
         </div>
         <div>
-            <el-image :fit="scale-down" class="image-container" :src="image.url2"></el-image>
-            <div style="text-align: center;">生成</div>
+            <el-image :fit="contain" class="image-container" :src="image.url2"></el-image>
+            <div style="text-align: center; color: white;">生成</div>
         </div>
     </div>
 </template>
@@ -18,9 +18,10 @@
 <style scoped>
     .card {
         display: flex;
-        box-shadow: 2px 2px 2px 2px gray;
+        border: solid 2px white;
         width: 420px;
         margin: 20px;
+        border-radius: 10px;
     }
     .image-container {
         width: 200px;
