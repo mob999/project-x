@@ -5,27 +5,12 @@ import { computed } from '@vue/reactivity';
 import { ref } from 'vue';
 import { useStore } from 'vuex';
 const image_list = ref([])
-const model_name = ref()
 
-const image_info_list = ref([
-  {
-    name: 'no.1',
-    model: 'snow',
-    rank: 100
-  },
-  {
-    name: 'no.2',
-    model: 'snow',
-    rank: 100
-  },
-  {
-    name: 'no.3',
-    model: 'snow',
-    rank: 100
-  },
-])
+const image_info_list = ref([])
 const store = useStore()
+const model_name = ref(store.state.default_model)
 const options = computed(()=> store.state.models)
+let image_id = 1
 
 server.getDeviceImages().then((res) => {
   image_list.value = res.data.reverse()
@@ -34,9 +19,17 @@ server.getDeviceImages().then((res) => {
 const settings = computed(()=> store.state.settings)
 console.log(settings.value)
 const capture = () => {
-  server.capture(settings.value).then(() => {
+  server.capture({...settings.value, model_name: model_name.value }).then(() => {
     server.getNewestImage().then((res) => {
       image_list.value.unshift(res.data)
+      server.fetchScore(model_name.value).then(res=>{
+        image_info_list.value.unshift({
+          name: image_id,
+          model: res.data.model,
+          rank: res.data.standard_score
+        })
+      })
+      image_id += 1
     })
   })
 }
@@ -73,8 +66,8 @@ const headerRowStyle = "\
           <el-table-column  prop="name" label="图片名称"></el-table-column>
           <el-table-column prop="model" label="使用模型"></el-table-column>
           <el-table-column prop="rank" label="评分"></el-table-column>
-          </el-table>
-        </div>
+        </el-table>
+    </div>
   </div>
 </template>
 

@@ -50,6 +50,21 @@ const fetchModels = () => {
     })
 }
 
+const fetchScore = (model) => {
+    return server({
+        url: '/get-score?model='+model,
+        method: 'get',
+    })
+}
+
+const fetchImageDataBase = (start, size) => {
+    return server({
+        url: '/database/get-images',
+        method: 'get',
+        params: {'start': start, 'size': size}
+    })
+}
+
 export default {
-    getDeviceImages, postImage, capture, getNewestImage, fetchModels
+    getDeviceImages, postImage, capture, getNewestImage, fetchModels, fetchScore, fetchImageDataBase
 }

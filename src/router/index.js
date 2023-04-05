@@ -4,6 +4,8 @@ import Capture from '../views/Capture.vue'
 import Upload from '../views/Upload.vue'
 import Settings from '../views/Settings.vue'
 import Help from '../views/Help.vue'
+import Docs from '../views/Docs.vue'
+import Database from '../views/Database.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -26,6 +28,14 @@ const router = createRouter({
     {
       path: '/help',
       component: Help
+    },
+    {
+      path: '/docs',
+      component: Docs
+    },
+    {
+      path: '/database',
+      component: Database
     }
   ]
 })

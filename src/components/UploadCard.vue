@@ -21,15 +21,15 @@ const props = defineProps(['image'])
 .card {
     display: flex;
     border: solid 2px white;
-    width: 1220px;
+    width: 1020px;
     margin: 20px;
     border-radius: 10px;
     margin-left: 100px;
 }
 
 .image-container {
-    width: 600px;
-    height: 600px;
+    width: 500px;
+    height: 500px;
     box-shadow: 2px 2px gray;
     margin: 5px;
 }

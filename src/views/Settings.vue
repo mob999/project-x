@@ -12,16 +12,24 @@
             </el-col>
             <el-divider />
             <el-col>
-                <div>过曝光优化 
-                    <el-radio-group style="width: 300px;margin-left: 35px;" v-model="properties.adjust">
-                        <el-radio label="true">开启</el-radio>
-                        <el-radio label="false">关闭</el-radio>
-                    </el-radio-group></div>
+                <div>过曝光优化
+                    <el-switch style="width: 300px;margin-left: 35px;" v-model="properties.adjust">
+                    </el-switch>
+                </div>
             </el-col>
             <el-divider />
             <el-col>
                 <div>设备url
-                    <el-input style="width: 500px;margin-left: 60px;" placeholder="请输入您设备的url，若留空，将使用我们默认的设备" v-model="properties.device_url"></el-input>
+                    <el-input style="width: 500px;margin-left: 60px;" placeholder="请输入您设备的url，若留空，将使用我们默认的设备"
+                        v-model="properties.device_url"></el-input>
+                </div>
+            </el-col>
+            <el-divider />
+            <el-col>
+                <div>默认模型
+                    <el-select style="width: 200px;margin-left: 45px;" v-model="default_model" placeholder="选择模型">
+                        <el-option v-for="item in options" :key="item" :value="item" />
+                    </el-select>
                 </div>
             </el-col>
             <el-divider />
@@ -35,13 +43,14 @@
 
 <script setup>
 import { useStore } from 'vuex';
-
+import { ref } from 'vue';
 const store = useStore()
 const properties = store.state.settings
-
-const saveSettings = ()=> {
+const options = store.state.models
+const default_model = ref(store.state.default_model)
+const saveSettings = () => {
     store.commit('update_settings', properties)
-    console.log(store.state.settings)
+    store.commit('update_default_model', default_model)
 }
 
 </script>

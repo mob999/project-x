@@ -10,7 +10,8 @@ const store = createStore({
         size: 0,
         adjust: false,
         url: 'default'
-      }
+      },
+      default_model: 'snow_cyclegan'
     }
   },
   mutations: {
@@ -24,6 +25,9 @@ const store = createStore({
        state.settings = {
         brightness,size,adjust,url
        }
+    },
+    update_default_model(state, param) {
+      state.default_model = param
     }
   }
 })

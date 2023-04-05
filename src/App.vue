@@ -19,13 +19,14 @@ onMounted(()=>store.commit('fetch_models'))
             <el-col style="margin: 10px;"><router-link class="router-link-active" to="/upload">上传照片</router-link></el-col>
             <el-col style="margin: 10px;"><router-link class="router-link-active" to="/settings">设置</router-link></el-col>
             <el-col style="margin: 10px;"><router-link class="router-link-active" to="/help">帮助</router-link></el-col>
+            <el-col style="margin: 10px;"><router-link class="router-link-active" to="/database">数据库（测试版）</router-link></el-col>
           </el-row>
         </div>
       </el-aside>
       <el-container>
         <el-header class="main-header">
           <el-image class="header-logo" :src="logo"></el-image>
-          <div style="margin-left: 20px; font-weight: 900;">Malicious Autonomous Driving Scene Generation</div> 
+          <div style="margin-left: 20px; font-weight: 900;">Autonomous driving Adversarial Scene Generation</div> 
           
         </el-header>
         <el-main class="main-main">
@@ -47,6 +48,8 @@ onMounted(()=>store.commit('fetch_models'))
 .router-link-active {
     text-decoration: none;
     color: orange;
+    font-weight: 900;
+    font-size: 20px;
   }
 
 .menu-options {
